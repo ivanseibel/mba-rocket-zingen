@@ -17,7 +17,6 @@
 .container {
   --max-width: 375px;
   width: min(var(--max-width), 100% - var(--px-lg) * 2);
-  border: 1px solid violet;
   margin-inline: auto;
 }
 
@@ -34,6 +33,10 @@
   display: flex;
 }
 
+.items-center {
+  align-items: center;
+}
+
 .grid {
   display: grid;
 }
@@ -42,7 +45,11 @@
   gap: 1rem;
 }
 
-@media (width >= 80em) {
+.gap-1\.5 {
+  gap: 1.5rem;
+}
+
+@media (width >= 44.5em) {
   .container {
     --max-width: 80rem;
   }
