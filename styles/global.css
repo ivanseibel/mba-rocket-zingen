@@ -93,7 +93,7 @@ ul [role='list'] {
   list-style: none;
 }
 
-@media (width >= 80em) {
+@media (width >= 44.5em) {
   :root {
     --fs-lg: 2rem;
     --fs-xl: 3rem;
