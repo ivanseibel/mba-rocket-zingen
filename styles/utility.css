@@ -20,10 +20,6 @@
   margin-inline: auto;
 }
 
-.desktop-only {
-  display: none;
-}
-
 .even-columns {
   display: grid;
   gap: 1rem;
@@ -53,13 +49,19 @@
   .container {
     --max-width: 80rem;
   }
-
+  
   .desktop-only {
     display: initial;
-  }
-
+  }  
+  
   .even-columns {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+  }
+}
+
+@media (width < 80em) {
+  .desktop-only {
+    display: none;
   }
 }
