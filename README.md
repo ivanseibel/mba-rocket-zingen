@@ -1,37 +1,120 @@
-# PROJECT DOCUMENTATION
 
-## CSS
+# Zingen Karaoke - Responsive Design Study Project
 
-### 1. `.even-columns` class
+## Overview
 
-The `.even-columns` class is designed to create a responsive grid layout. Here's a breakdown of its functionality:
+Zingen Karaoke is a study project aimed at reviewing and applying concepts of responsive design and mobile-first principles. The project includes an HTML file (`index.html`) and several CSS files that style various components of the webpage. The goal is to create a seamless and responsive karaoke web app that works well across different devices and screen sizes.
 
-1. **Outside the media query:**
+## Project Structure
 
-```css
-.even-columns {
-  display: grid;
-  gap: 1rem;
-}
-```
+The project consists of the following files:
 
-This sets up a grid layout for any element with the `.even-columns` class. The `gap` property sets a 1rem gap between grid items.
+- `index.html`: The main HTML file containing the structure of the webpage.
+- CSS Files:
+  - `about.css`: Styles for the About section.
+  - `buttons.css`: Styles for various buttons.
+  - `cards.css`: Styles for the card components.
+  - `download.css`: Styles for the Download section.
+  - `features.css`: Styles for the Features section.
+  - `footer.css`: Styles for the Footer.
+  - `global.css`: Global styles and variables.
+  - `header.css`: Styles for the Header.
+  - `hero.css`: Styles for the Hero section.
+  - `index.css`: The main CSS file that imports other CSS files.
+  - `pricing.css`: Styles for the Pricing section.
+  - `sections.css`: Styles for general sections.
+  - `social.css`: Styles for social media icons.
+  - `utility.css`: Utility classes for common styles.
 
-2. **Inside the media query:**
+## Key Concepts
+
+### Responsive Design
+
+Responsive design is about creating web pages that look good on all devices. The project uses media queries to apply different styles based on the screen size. For example:
+
+- **Mobile First**: The base styles are designed for mobile devices first. Media queries are used to enhance the design for larger screens.
+- **Media Queries**: Various CSS files use media queries to adjust styles for screens larger than 80em (1280px) and smaller screens.
+
+### Mobile First Approach
+
+The mobile-first approach ensures that the website is optimized for mobile devices before adding styles for larger screens. This is evident in the use of media queries that progressively enhance the design:
 
 ```css
 @media (width >= 80em) {
+  .container {
+    --max-width: 80rem;
+  }
+  
+  .desktop-only {
+    display: initial;
+  }  
+  
   .even-columns {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
   }
 }
+
+@media (width < 80em) {
+  .desktop-only {
+    display: none;
+  }
+}
 ```
 
-This media query applies when the viewport width is 80em or wider. For elements with the `.even-columns` class, it changes the grid layout in two ways:
+### CSS Grid and Flexbox
 
-- `grid-auto-flow: column;` changes the direction in which new grid items are added. Outside the media query, the default value is `row`, so new items are added in new rows. Inside the media query, new items are added in new columns. This is useful for wide screens, where horizontal space is plentiful.
+The project extensively uses CSS Grid and Flexbox for layout management, ensuring flexible and responsive designs:
 
-- `grid-auto-columns: 1fr;` sets the size of implicitly created columns. If there are more grid items than cells defined in your grid template, this property controls the size of the columns that are automatically created to accommodate those extra items. By setting it to `1fr`, you're telling the browser to make these implicitly created columns take up an equal share of the available space. This ensures that all columns have equal width, regardless of the number of items.
+- **CSS Grid**: Used for creating complex layouts, especially for the card components and section layouts.
+- **Flexbox**: Used for aligning items within containers, such as in navigation and button groups.
 
-In summary, the `.even-columns` class creates a responsive grid layout that adjusts based on the viewport width. On narrow screens, grid items are stacked in rows. On wide screens, grid items are placed in columns of equal width.
+## File Details
+
+### `index.html`
+
+The main HTML file includes the structure for various sections such as the header, hero, features, pricing, and footer. It links to the `index.css` for styling.
+
+### `index.css`
+
+This file imports all other CSS files to modularize the styles and maintain a clean structure:
+
+```css
+@import url(global.css);
+@import url(utility.css);
+@import url(buttons.css);
+@import url(social.css);
+@import url(header.css);
+@import url(hero.css);
+@import url(sections.css);
+@import url(about.css);
+@import url(cards.css);
+@import url(features.css) (width >= 80em);
+@import url(pricing.css);
+@import url(download.css);
+@import url(footer.css);
+```
+
+### Individual CSS Files
+
+Each CSS file focuses on styling a specific part of the webpage:
+
+- **Global Styles (`global.css`)**: Contains variables and global resets.
+- **Utility Styles (`utility.css`)**: Includes utility classes for padding, margins, and other common styles.
+- **Component Styles**:
+  - `header.css`: Styles for the navigation header.
+  - `hero.css`: Styles for the hero section, including background images and text alignment.
+  - `features.css`: Styles for the features section, using grid layout for cards.
+  - `pricing.css`: Styles for the pricing section, including card layouts and pricing details.
+  - `footer.css`: Styles for the footer, including social media icons and links.
+  - `about.css`, `download.css`, `sections.css`: Styles for the respective sections.
+
+## Live Demo
+
+You can view the live demo of the Zingen Karaoke project [here](https://ivanseibel.github.io/mba-rocket-zingen/).
+
+## Conclusion
+
+This project is an excellent example of applying responsive design and mobile-first principles in a real-world scenario. By modularizing the CSS and using advanced layout techniques like CSS Grid and Flexbox, the project achieves a highly responsive and user-friendly design.
+
+Feel free to explore the code and experiment with different styles and layouts to deepen your understanding of responsive design!
